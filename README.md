@@ -1,192 +1,313 @@
-🩺 Doctor Appointment Scheduler
+<div align="center">
 
-A modern full-stack web application for seamless doctor appointment booking and management, built using Spring Boot, React, and MySQL.
+<img src="https://img.shields.io/badge/Spring%20Boot-3.x-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white" />
+<img src="https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black" />
+<img src="https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql&logoColor=white" />
+<img src="https://img.shields.io/badge/Java-17-ED8B00?style=for-the-badge&logo=java&logoColor=white" />
+<img src="https://img.shields.io/badge/JWT-Secured-000000?style=for-the-badge&logo=json-web-tokens&logoColor=white" />
+<img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" />
 
-🚀 Features
+<br/><br/>
 
-✨ Authentication & Authorization
+# 🩺 Doctor Appointment Scheduler
 
-Secure login/signup using JWT
+### A modern full-stack web application for seamless doctor appointment booking and management.
 
-Role-based access: PATIENT, DOCTOR, ADMIN
+<br/>
 
-👨‍⚕️ Doctor Module
+</div>
 
-Manage profile & specialization
+---
 
-Create and manage available time slots
+## 📌 Table of Contents
 
-View and update appointment status
+- [✨ Features](#-features)
+- [🧰 Tech Stack](#-tech-stack)
+- [📁 Project Structure](#-project-structure)
+- [⚙️ Prerequisites](#️-prerequisites)
+- [🛠️ Setup & Installation](#️-setup--installation)
+- [🔐 API Endpoints](#-api-endpoints)
+- [📧 Email Configuration](#-email-configuration-optional)
+- [📌 Future Enhancements](#-future-enhancements)
+- [🤝 Contributing](#-contributing)
 
-👩‍💻 Patient Module
+---
 
-Search doctors by name/specialization
+## ✨ Features
 
-Book appointments with available slots
+<table>
+<tr>
+<td width="50%">
 
-View & cancel appointments
+### 🔐 Authentication & Authorization
+- Secure login/signup using **JWT**
+- Role-based access control:
+  - `PATIENT` 🧑‍💼
+  - `DOCTOR` 👨‍⚕️
+  - `ADMIN` 🛡️
 
-🛠️ Admin Module
+### 👨‍⚕️ Doctor Module
+- Manage profile & specialization
+- Create and manage available time slots
+- View and update appointment status
 
-Manage doctors
+</td>
+<td width="50%">
 
-Monitor all appointments
+### 👩‍💻 Patient Module
+- Search doctors by **name** or **specialization**
+- Book appointments with available slots
+- View & cancel appointments
 
-📧 Email Notifications
+### 🛡️ Admin Module
+- Manage doctor accounts
+- Monitor all appointments across the platform
 
-Appointment confirmations
+### 📧 Email Notifications
+- Appointment confirmation emails
+- Optional reminder emails
 
-Reminder emails (optional)
+</td>
+</tr>
+</table>
 
-🧰 Tech Stack
-Layer	Technology
-Backend	Spring Boot 3.x, Java 17
-Frontend	React 18, React Router
-Database	MySQL 8
-Security	Spring Security + JWT
-Build Tool	Maven
-API Testing	Postman
-📁 Project Structure
+---
+
+## 🧰 Tech Stack
+
+| Layer | Technology |
+|---|---|
+| 🖥️ Backend | Spring Boot 3.x, Java 17 |
+| 🌐 Frontend | React 18, React Router |
+| 🗄️ Database | MySQL 8 |
+| 🔒 Security | Spring Security + JWT |
+| 🔧 Build Tool | Maven |
+| 🧪 API Testing | Postman |
+
+---
+
+## 📁 Project Structure
+
+```
 doctor-appointment-scheduler/
 │
-├── backend/
-│   ├── src/main/java/com/appointment/scheduler/
-│   │   ├── config/        # Security, JWT, CORS
-│   │   ├── controller/    # REST Controllers
-│   │   ├── dto/           # Request/Response DTOs
-│   │   ├── entity/        # JPA Entities
-│   │   ├── exception/     # Global Exception Handling
-│   │   ├── repository/    # JPA Repositories
-│   │   └── service/       # Business Logic
-│   └── resources/
-│       └── application.properties
+├── 📂 backend/
+│   └── src/main/java/com/appointment/scheduler/
+│       ├── config/         # Security, JWT, CORS
+│       ├── controller/     # REST Controllers
+│       ├── dto/            # Request/Response DTOs
+│       ├── entity/         # JPA Entities
+│       ├── exception/      # Global Exception Handling
+│       ├── repository/     # JPA Repositories
+│       └── service/        # Business Logic
 │
-├── frontend/
-│   ├── src/
-│   │   ├── api/           # Axios Config
-│   │   ├── components/
-│   │   │   ├── auth/
-│   │   │   ├── patient/
-│   │   │   ├── doctor/
-│   │   │   └── admin/
-│   │   ├── context/       # Auth Context
-│   │   └── styles/
-│   └── package.json
-⚙️ Prerequisites
+└── 📂 frontend/
+    └── src/
+        ├── api/            # Axios Config
+        ├── components/
+        │   ├── auth/
+        │   ├── patient/
+        │   ├── doctor/
+        │   └── admin/
+        ├── context/        # Auth Context
+        └── styles/
+```
 
-Make sure you have installed:
+---
 
-☕ Java 17+
+## ⚙️ Prerequisites
 
-🟢 Node.js 18+
+Make sure you have the following installed before getting started:
 
-🐬 MySQL 8
+| Tool | Version |
+|---|---|
+| ☕ Java | 17+ |
+| 🟢 Node.js | 18+ |
+| 🐬 MySQL | 8+ |
+| 📦 Maven | Latest |
 
-📦 Maven
+---
 
-🛠️ Setup & Installation
-1️⃣ Clone the Repository
+## 🛠️ Setup & Installation
+
+### 1️⃣ Clone the Repository
+
+```bash
 git clone https://github.com/your-username/doctor-appointment-scheduler.git
 cd doctor-appointment-scheduler
-2️⃣ Database Setup
+```
+
+---
+
+### 2️⃣ Database Setup
+
+```sql
 CREATE DATABASE doctor_appointment_db;
-3️⃣ Backend Setup
+```
+
+---
+
+### 3️⃣ Backend Setup
+
+```bash
 cd backend
+```
 
-Update application.properties:
+Update `src/main/resources/application.properties`:
 
+```properties
 spring.datasource.url=jdbc:mysql://localhost:3306/doctor_appointment_db
 spring.datasource.username=YOUR_USERNAME
 spring.datasource.password=YOUR_PASSWORD
 
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
+```
 
 Run the backend:
 
-./mvnw spring-boot:run     # Linux/Mac
-mvnw.cmd spring-boot:run   # Windows
+```bash
+# Linux / macOS
+./mvnw spring-boot:run
 
-🔗 Backend runs at:
-👉 http://localhost:8080
+# Windows
+mvnw.cmd spring-boot:run
+```
 
-4️⃣ Frontend Setup
+> 🔗 Backend runs at: **http://localhost:8080**
+
+---
+
+### 4️⃣ Frontend Setup
+
+```bash
 cd frontend
 npm install
 npm start
+```
 
-🔗 Frontend runs at:
-👉 http://localhost:3000
+> 🔗 Frontend runs at: **http://localhost:3000**
 
-🔐 API Endpoints
-🔑 Authentication
-Method	Endpoint	Description
-POST	/api/auth/signup	Register user
-POST	/api/auth/login	Login user
-👨‍⚕️ Doctor APIs (Protected)
-Method	Endpoint	Description
-GET	/api/doctor/profile	Get profile
-PUT	/api/doctor/profile	Update profile
-POST	/api/doctor/slots	Add slot
-DELETE	/api/doctor/slots/{id}	Delete slot
-GET	/api/doctor/appointments	View appointments
-PUT	/api/doctor/appointments/{id}/status	Update status
-🌍 Public Doctor APIs
-Method	Endpoint	Description
-GET	/api/doctor/all	Get all doctors
-GET	/api/doctor/{id}	Get doctor by ID
-GET	/api/doctor/search/specialization	Search by specialization
-GET	/api/doctor/search/name	Search by name
-👩‍💻 Patient APIs (Protected)
-Method	Endpoint	Description
-POST	/api/patient/appointments	Book appointment
-GET	/api/patient/appointments	View appointments
-PUT	/api/patient/appointments/{id}/cancel	Cancel appointment
-🛡️ Admin APIs
-Method	Endpoint	Description
-GET	/api/admin/doctors	Get all doctors
-GET	/api/admin/appointments	Get all appointments
-👑 Default Admin Setup
+---
+
+## 🔐 API Endpoints
+
+### 🔑 Authentication
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `POST` | `/api/auth/signup` | Register a new user |
+| `POST` | `/api/auth/login` | Login and receive JWT |
+
+---
+
+### 👨‍⚕️ Doctor APIs *(Protected)*
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/api/doctor/profile` | Get doctor profile |
+| `PUT` | `/api/doctor/profile` | Update doctor profile |
+| `POST` | `/api/doctor/slots` | Add a new time slot |
+| `DELETE` | `/api/doctor/slots/{id}` | Delete a time slot |
+| `GET` | `/api/doctor/appointments` | View all appointments |
+| `PUT` | `/api/doctor/appointments/{id}/status` | Update appointment status |
+
+---
+
+### 🌍 Public Doctor APIs
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/api/doctor/all` | Get all doctors |
+| `GET` | `/api/doctor/{id}` | Get doctor by ID |
+| `GET` | `/api/doctor/search/specialization` | Search by specialization |
+| `GET` | `/api/doctor/search/name` | Search by name |
+
+---
+
+### 👩‍💻 Patient APIs *(Protected)*
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `POST` | `/api/patient/appointments` | Book an appointment |
+| `GET` | `/api/patient/appointments` | View all appointments |
+| `PUT` | `/api/patient/appointments/{id}/cancel` | Cancel an appointment |
+
+---
+
+### 🛡️ Admin APIs
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/api/admin/doctors` | Get all doctors |
+| `GET` | `/api/admin/appointments` | Get all appointments |
+
+---
+
+### 👑 Default Admin Setup
+
+Insert a default admin user into the database:
+
+```sql
 INSERT INTO users (full_name, email, password, role, enabled)
 VALUES ('Admin', 'admin@example.com', '$2a$10$YOUR_BCRYPT_HASH', 'ROLE_ADMIN', true);
+```
 
-👉 Generate BCrypt hash using:
+> 💡 Generate a BCrypt hash using [Spring's BCryptPasswordEncoder](https://docs.spring.io/spring-security/reference/) or any online BCrypt tool.
 
-Spring BCryptPasswordEncoder
+---
 
-Online bcrypt tools
+## 📧 Email Configuration *(Optional)*
 
-📧 Email Configuration (Optional)
+Add the following to `application.properties` to enable email notifications:
+
+```properties
 spring.mail.host=smtp.gmail.com
 spring.mail.port=587
 spring.mail.username=your-email@gmail.com
 spring.mail.password=your-app-password
 spring.mail.properties.mail.smtp.auth=true
 spring.mail.properties.mail.smtp.starttls.enable=true
-📌 Future Enhancements
+```
 
-🔔 Real-time notifications (WebSockets)
+---
 
-💳 Online payment integration
+## 📌 Future Enhancements
 
-📅 Google Calendar sync
+- 🔔 Real-time notifications via **WebSockets**
+- 💳 **Online payment** integration
+- 📅 **Google Calendar** sync
+- ⭐ Doctor **ratings & reviews** system
 
-⭐ Doctor ratings & reviews
+---
 
-🤝 Contributing
+## 🤝 Contributing
 
-Contributions are welcome!
-Feel free to fork this repo and submit a pull request.
+Contributions are always welcome! 🎉
 
-📜 License
+1. Fork the repository
+2. Create your feature branch: `git checkout -b feature/AmazingFeature`
+3. Commit your changes: `git commit -m 'Add some AmazingFeature'`
+4. Push to the branch: `git push origin feature/AmazingFeature`
+5. Open a **Pull Request**
 
-This project is licensed under the MIT License.
+---
 
-💡 Author
+## 📜 License
 
-Vaishnavi Pawale
-Java Full Stack Developer 🚀
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
 
-⭐ Show Your Support
+---
 
-If you like this project, give it a ⭐ on GitHub!
+<div align="center">
+
+### 💡 Author
+
+**Vaishnavi Pawale**
+*Java Full Stack Developer 🚀*
+
+<br/>
+
+⭐ **If you found this project helpful, please give it a star on GitHub!** ⭐
+
+</div>
