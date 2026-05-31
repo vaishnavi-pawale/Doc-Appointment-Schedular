@@ -1,12 +1,10 @@
 import axios from 'axios';
 
-// To your actual live backend service URL:
-const BASE_URL = "https://doc-appointment-schedular.onrender.com";
-
-//const API_BASE_URL = 'http://localhost:8080/api';
+// Use a deployed backend by default, but allow local overrides during development.
+const BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://doc-appointment-schedular.onrender.com/api';
 
 const api = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },
