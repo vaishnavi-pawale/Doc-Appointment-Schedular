@@ -5,9 +5,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -17,13 +14,12 @@ import java.util.Arrays;
 public class CorsConfig implements WebMvcConfigurer {
 
     private static final String LOCAL_FRONTEND_ORIGIN = "http://localhost:3000";
-    private static final String VERCEL_ORIGIN_PATTERN = "https://doc-appointment-schedular-1.onrender.com/login";
+    private static final String DEPLOYED_FRONTEND_ORIGIN_PATTERN = "https://doc-appointment-schedular-*.onrender.com";
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/api/**")
-                .allowedOrigins(LOCAL_FRONTEND_ORIGIN)
-                .allowedOriginPatterns(VERCEL_ORIGIN_PATTERN)
+                .allowedOriginPatterns(LOCAL_FRONTEND_ORIGIN, DEPLOYED_FRONTEND_ORIGIN_PATTERN)
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true)
@@ -33,8 +29,7 @@ public class CorsConfig implements WebMvcConfigurer {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList(LOCAL_FRONTEND_ORIGIN));
-        configuration.setAllowedOriginPatterns(Arrays.asList(VERCEL_ORIGIN_PATTERN));
+        configuration.setAllowedOriginPatterns(Arrays.asList(LOCAL_FRONTEND_ORIGIN, DEPLOYED_FRONTEND_ORIGIN_PATTERN));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setAllowCredentials(true);
