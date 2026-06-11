@@ -25,32 +25,37 @@ public class DoctorService {
         this.timeSlotRepository = timeSlotRepository;
     }
 
+        @Transactional(readOnly = true)
     public List<DoctorResponse> getAllDoctors() {
         return doctorRepository.findAll().stream()
                 .map(this::mapToDoctorResponse)
                 .collect(Collectors.toList());
     }
 
+        @Transactional(readOnly = true)
     public DoctorResponse getDoctorById(Long id) {
         Doctor doctor = doctorRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Doctor not found with id: " + id));
         return mapToDoctorResponse(doctor);
     }
 
+        @Transactional(readOnly = true)
     public DoctorResponse getDoctorByEmail(String email) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
-        Doctor doctor = doctorRepository.findByUser(user)
+            Doctor doctor = doctorRepository.findByUserId(user.getId())
                 .orElseThrow(() -> new ResourceNotFoundException("Doctor profile not found"));
         return mapToDoctorResponse(doctor);
     }
 
+        @Transactional(readOnly = true)
     public List<DoctorResponse> searchDoctorsBySpecialization(String specialization) {
         return doctorRepository.findBySpecializationContainingIgnoreCase(specialization).stream()
                 .map(this::mapToDoctorResponse)
                 .collect(Collectors.toList());
     }
 
+        @Transactional(readOnly = true)
     public List<DoctorResponse> searchDoctorsByName(String name) {
         return doctorRepository.findByUserFullNameContainingIgnoreCase(name).stream()
                 .map(this::mapToDoctorResponse)
@@ -61,7 +66,7 @@ public class DoctorService {
     public DoctorResponse updateProfile(String email, DoctorProfileRequest request) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
-        Doctor doctor = doctorRepository.findByUser(user)
+        Doctor doctor = doctorRepository.findByUserId(user.getId())
                 .orElseThrow(() -> new ResourceNotFoundException("Doctor profile not found"));
 
         doctor.setSpecialization(request.getSpecialization());
@@ -78,7 +83,7 @@ public class DoctorService {
     public DoctorResponse addTimeSlot(String email, TimeSlotRequest request) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
-        Doctor doctor = doctorRepository.findByUser(user)
+        Doctor doctor = doctorRepository.findByUserId(user.getId())
                 .orElseThrow(() -> new ResourceNotFoundException("Doctor profile not found"));
 
         TimeSlot timeSlot = TimeSlot.builder()
@@ -97,7 +102,7 @@ public class DoctorService {
     public ApiResponse deleteTimeSlot(String email, Long slotId) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
-        Doctor doctor = doctorRepository.findByUser(user)
+        Doctor doctor = doctorRepository.findByUserId(user.getId())
                 .orElseThrow(() -> new ResourceNotFoundException("Doctor profile not found"));
 
         TimeSlot slot = timeSlotRepository.findById(slotId)
